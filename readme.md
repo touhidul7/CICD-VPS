@@ -74,7 +74,7 @@ In your project folder, create the file:
 `.github/workflows/deploy.yml`
 
 ```yaml
-name: Blood Management
+name: Project Deployment
 
 on:
   push:
@@ -93,6 +93,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
+            # Add repository as safe (fixes "dubious ownership" error)
+            git config --global --add safe.directory ${{ secrets.PROJECT_PATH }}
             cd ${{ secrets.PROJECT_PATH }}
             git pull origin main
 ```
