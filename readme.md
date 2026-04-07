@@ -26,12 +26,12 @@ apt install git -y
 ## 🔑 Step 4: Generate SSH Key on VPS
 
 ```bash
-ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/.ssh/ajmain
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/.ssh/CICD
 ```
 
 Press Enter when prompted to confirm the path. You’ll get two files:
-- Private key: `~/.ssh/ajmain`
-- Public key: `~/.ssh/ajmain.pub`
+- Private key: `~/.ssh/CICD`
+- Public key: `~/.ssh/CICD.pub`
 
 ---
 
@@ -39,11 +39,11 @@ Press Enter when prompted to confirm the path. You’ll get two files:
 
 1. Display the public key:
     ```bash
-    cat ~/.ssh/ajmain.pub
+    cat ~/.ssh/CICD.pub
     ```
 2. Append it to authorized keys:
     ```bash
-    cat ~/.ssh/ajmain.pub >> ~/.ssh/authorized_keys
+    cat ~/.ssh/CICD.pub >> ~/.ssh/authorized_keys
     ```
 3. Go to **GitHub → Settings → SSH and GPG keys**
 4. Click **"New SSH Key"**
@@ -106,7 +106,7 @@ Click **"New repository secret"** for each of the following:
 
 | Name              | Value                                                       |
 |-------------------|-------------------------------------------------------------|
-| `SSH_PRIVATE_KEY` | Content of `~/.ssh/ajmain` (the **private key**, not `.pub`) |
+| `SSH_PRIVATE_KEY` | Content of `~/.ssh/CICD` (the **private key**, not `.pub`) |
 | `VPS_HOST`        | Your VPS IP (e.g., `20.2.4.20`)                             |
 | `VPS_USER`        | Your SSH username (e.g., `root`)                            |
 | `PROJECT_PATH`    | Path to your project on VPS (e.g., `/www/wwwroot/test.mirpurianscafe.com`) |
